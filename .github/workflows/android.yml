@@ -21,7 +21,7 @@ jobs:
           distribution: temurin
           java-version: 21
 
-            - name: Capacitor + AdMob 설치 (서로 맞는 버전으로)
+      - name: Capacitor + AdMob 설치 (서로 맞는 버전으로)
         run: |
           ADMOB=$(npm view @capacitor-community/admob version)
           MAJOR=${ADMOB%%.*}
