@@ -21,11 +21,12 @@ jobs:
           distribution: temurin
           java-version: 21
 
-      - name: Capacitor + AdMob 설치 (서로 맞는 버전으로)
+            - name: Capacitor + AdMob 설치 (서로 맞는 버전으로)
         run: |
-          CAP=$(npm view @capacitor-community/admob@latest peerDependencies --json | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s)['@capacitor/core']))")
-          echo "Capacitor 버전: $CAP"
-          npm install --no-audit --no-fund "@capacitor/core@$CAP" "@capacitor/cli@$CAP" "@capacitor/android@$CAP" "@capacitor/splash-screen@$CAP" @capacitor-community/admob@latest
+          ADMOB=$(npm view @capacitor-community/admob version)
+          MAJOR=${ADMOB%%.*}
+          echo "AdMob 플러그인 $ADMOB / Capacitor $MAJOR"
+          npm install --no-audit --no-fund @capacitor/core@$MAJOR @capacitor/cli@$MAJOR @capacitor/android@$MAJOR @capacitor/splash-screen@$MAJOR @capacitor-community/admob@$ADMOB
           npm install --no-audit --no-fund -D @capacitor/assets@latest
 
       - name: 안드로이드 프로젝트 만들기
