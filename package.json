@@ -1,0 +1,9 @@
+{
+  "name": "nyang-expedition",
+  "version": "1.0.0",
+  "private": true,
+  "description": "냥냥 탐험대 - 고양이 자동전투 방치형 RPG",
+  "scripts": {
+    "sync": "npx cap sync android"
+  }
+}
